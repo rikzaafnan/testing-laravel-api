@@ -1,0 +1,117 @@
+{
+    "openapi":"3.0.3",
+    "info": {
+        "title": "User API",
+        "description": "User API",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000"
+        },
+        {
+            "url": "http://api-dev-coba.codethusiast.my.id:10020"
+        }
+    ],
+    "paths": {
+        "/api/users": {
+            "post": {
+                "description": "Register new user",
+                "requestBody":{
+                    "content": {
+                        "application/json":{
+                            "examples" : {
+                                "khannedy": {
+                                    "description" : "Register User Khannedy",
+                                    "value" : {
+                                        "username" : "khannedy",
+                                        "password" : "rahasia",
+                                        "name" : "nama khennedy lohh"
+                                    }
+                                },
+                                "luvita": {
+                                    "description" : "Register User luvita",
+                                    "value" : {
+                                        "username" : "luvita",
+                                        "password" : "rahasia",
+                                        "name" : "nama luvita lohh"
+                                    }
+                                }
+                            },
+                            "schema" : {
+                                "type" : "object",
+                                "required": [
+                                    "name", "username", "password"
+                                ],
+                                "properties" : {
+                                    "username" :{
+                                        "type" : "string"
+                                    },
+                                    "password": {
+                                        "type" : "string"
+    
+                                    },
+                                    "name" :{
+                                        "type" : "string"
+    
+                                    }
+                                }
+                            }
+                        }
+                    }   
+                },
+                "responses": {
+                    "201" :{
+                        "description": "success create register",
+                        "content": {
+                            "application/json" : {
+                                "schema" : {
+                                    "type": "object",
+                                    "properties": {
+                                        "data":{
+                                            "type": "object",
+                                            "properties": {
+                                                "id" : {
+                                                    "type": "string"
+                                                },
+                                                "username" : {
+                                                    "type": "string"
+                                                },
+                                                "nama" :{
+                                                    "type": "string"
+                                                }
+                                            }
+                                        },
+                                        "errors":{
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users/login": {
+            "post": {
+                "description": "Login user"
+            }
+        },
+        "/api/users/current": {
+            "patch": {
+                "description": "Update current user"
+            },
+            "get": {
+                "description": "Get current user"
+            }
+        },
+        "/api/users/logout": {
+            "delete": {
+                "description": "Logout user"
+            }
+        }
+
+
+    }
+}
